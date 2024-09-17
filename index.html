@@ -1,6 +1,83 @@
-<h1>首页加急施工中</h1>
-<h3>敬请期待</h3>
-邮箱 -- gengcr666@outlook.com
-Github -- https://www.github.com/LGCR837
-Bilibili -- https://space.bilibili.com/3493271839967884
-博客园CnBlogs -- https://www.cnblogs.com/gengcr
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LGCR837 的主页</title>
+<style>
+  body, h1, p {
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    height: 100vh;
+    color: white;
+  }
+  @keyframes gradientBG {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+  }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 40px;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: white;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    outline: none;
+    margin: 5px;
+    transition: background 0.3s ease;
+  }
+  .btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+  }
+  .btn-primary {
+    background: #1a73e8;
+  }
+  .btn-secondary {
+    background: #6f42c1;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h1>欢迎来到 LGCR837 的主页</h1>
+  <p>这仅仅是一个初中生的网站 , 千万不要不要惊讶</p>
+  <p>邮箱: gengcr666@outlook.com</p>
+  <button class="btn btn-primary" onclick="location.href='https://geng-cr.github.io'">前往旧网站</button>
+  <button class="btn btn-secondary" onclick="location.href='https://www.bing.com'">空闲按钮2</button>
+  <button class="btn btn-primary" onclick="location.href='https://www.bing.com'">空闲按钮3</button>
+  <button class="btn btn-secondary" onclick="location.href='https://www.bing.com'">空闲按钮4</button>
+</div>
+
+</body>
+</html>
