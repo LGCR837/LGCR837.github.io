@@ -1,83 +1,114 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LGCR837 的主页</title>
-<style>
-  body, h1, p {
-    margin: 0;
-    padding: 0;
-  }
-  body {
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-    height: 100vh;
-    color: white;
-  }
-  @keyframes gradientBG {
-    0% {
-      background-position: 0% 50%;
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LGCR837 的个人主页，包含个人介绍和链接到其他平台的按钮。">
+  <title>LGCR837 的主页</title>
+  <style>
+    :root {
+      --secondary-color: #6f42c1;
+      --background-gradients: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     }
-    50% {
-      background-position: 100% 50%;
+
+    body, h1, p {
+      margin: 0;
+      padding: 0;
     }
-    100% {
-      background-position: 0% 50%;
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background: var(--background-gradients);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+      height: 100vh;
+      color: white;
     }
-  }
-  .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-  }
-  h1 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-  }
-  p {
-    font-size: 1.2rem;
-    margin-bottom: 40px;
-  }
-  .btn {
-    padding: 10px 20px;
-    font-size: 1rem;
-    color: white;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    outline: none;
-    margin: 5px;
-    transition: background 0.3s ease;
-  }
-  .btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-  }
-  .btn-primary {
-    background: #1a73e8;
-  }
-  .btn-secondary {
-    background: #6f42c1;
-  }
-</style>
+
+    @keyframes gradientBG {
+      0% {
+        background-position: 0% 50%;
+      }
+      50% {
+        background-position: 100% 50%;
+      }
+      100% {
+        background-position: 0% 50%;
+      }
+    }
+
+    .container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 40px;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .btn {
+      padding: 10px 20px;
+      font-size: 1rem;
+      color: white;
+      background: rgba(255, 255, 255, 0.1);
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      outline: none;
+      transition: background 0.3s ease;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-secondary {
+      background: var(--secondary-color);
+    }
+
+    .email-btn::after {
+      content: attr(data-email);
+      display: none;
+    }
+
+    .email-btn:hover::after {
+      display: inline;
+    }
+  </style>
 </head>
 <body>
-
-<div class="container">
-  <h1>欢迎来到 LGCR837 的主页</h1>
-  <p>这仅仅是一个初中生的网站 , 千万不要不要惊讶</p>
-  <p>邮箱: gengcr666@outlook.com</p>
-  <button class="btn btn-primary" onclick="location.href='https://geng-cr.github.io'">前往旧网站</button>
-  <button class="btn btn-secondary" onclick="location.href='https://space.bilibili.com/3493271839967884'">我的Bilibili</button>
-  <button class="btn btn-primary" onclick="location.href='https://www.cnblogs.com/gengcr/'">我的博客</button>
-  <button class="btn btn-secondary" onclick="location.href='/date/gpt.html'">聊天 GPT</button>
-</div>
-
+  <div class="container">
+    <header>
+      <h1>欢迎来到 LGCR837 的主页</h1>
+      <p>这仅仅是一个初中生的网站，千万不要惊讶</p>
+    </header>
+    <nav>
+      <button class="btn btn-secondary" onclick="location.href='/en.html'">英文 English</button>
+      <button class="btn btn-secondary" onclick="location.href='https://geng-cr.github.io'">废弃旧网站</button>
+      <button class="btn btn-secondary" onclick="location.href='https://space.bilibili.com/3493271839967884'">Bilibili</button>
+      <button class="btn btn-secondary" onclick="location.href='https://www.cnblogs.com/gengcr/'">Cnblogs</button>
+      <button class="btn btn-secondary email-btn" data-email="gengcr666@outlook.com" onclick="window.location.href='mailto:' + this.getAttribute('data-email')">E-mail  </button>
+      <button class="btn btn-secondary" onclick="location.href='https://chat18.aichatos8.com/'">ChatGPT 镜像</button>
+    </nav>
+  </div>
 </body>
 </html>
