@@ -1,58 +1,44 @@
-name: GreenHubActivityWeb1
+name: GreenHubActivityWeb1 Workflow
 
 on:
   schedule:
-    # 每天的北京时间 0:00 和 12:00 执行
-    - cron: '0 16,4 * * *'  # UTC时间是 16:00 和 4:00
+    # 16:00 UTC 和 4:00 UTC，时间是基于 UTC 的
+    - cron: '0 16 * * *'  # 每天16:00 UTC
+    - cron: '0 4 * * *'    # 每天4:00 UTC
+
   workflow_dispatch:  # 允许手动触发工作流
 
 jobs:
-  run-script:
+  run-python-script:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v2
+      # 检出当前仓库
+      - name: Checkout repository
+        uses: actions/checkout@v2
 
-    - name: Set up Python
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.9'  # 你可以根据需要选择合适的 Python 版本
+      # 设置 Python 版本
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install requests
+      # 安装所需的 Python 库
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests datetime pytz
 
-    - name: Run the script and save output to greenhubactivity.html
-      run: |
-        python -c "
-import requests
-from datetime import datetime
-
-# 获取当前时间并格式化为北京时间
-now = datetime.utcnow() + timedelta(hours=8)  # 北京时间是 UTC + 8 小时
-formatted_time = now.strftime('%Y-%m-%d %H:%M:%S')
-
-headers = {
-    'Authorization': 'Basic cmtfbGl2ZV81MUw5c3JLQ29GamtETjR4UGtvdEs2V0dHUHFmd2tnd3RFNkkxcTFURTlrdktzZ0s3SlQ5Mk5oaUFHeGpKeDQ0ejdHZnBzU1hZNmtpTVkyTTFWWkhFajJZVjAwbjRPS3pUSlg6'
-}
-result = requests.get('https://api.stripe.com/v1/customers', headers=headers).json()
-
-license_code = [customer['metadata']['license_code'] for customer in result['data']]
-
-# 写入 HTML 文件
-with open('greenhubactivity.html', 'w') as f:
-    f.write('<html><body><h1>License Codes</h1>')
-    f.write(f'<p>获取时间: {formatted_time}</p>')  # 增加当前获取时间
-    f.write('<ul>')
-    for i in license_code:
-        f.write(f'<li>{i}</li>')
-    f.write('</ul></body></html>')
-        "
-
-    - name: Upload greenhubactivity.html as an artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: greenhubactivity
-        path: greenhubactivity.html
+      # 运行 Python 脚本并生成 greenhubactivity.html
+      - name: Run greenhubactivity.py
+        run: |
+          python greenhubactivity.py > greenhubactivity.html
+          
+      # 提交结果文件到仓库
+      - name: Commit and push greenhubactivity.html
+        uses: EndBug/add-and-commit@v9
+        with:
+          author_name: 'GitHub Actions'
+          author_email: 'github-actions@github.com'
+          message: 'Update greenhubactivity.html'
+          add: 'greenhubactivity.html'
