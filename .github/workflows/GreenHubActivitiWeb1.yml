@@ -1,0 +1,48 @@
+name: GreenHubActivitiWeb1
+
+on:
+  schedule:
+    # 每天的 16:00 UTC 时间执行，相当于 0:00 Beijing
+    - cron: '0 16 * * *'
+  workflow_dispatch:  # 允许手动触发工作流
+
+jobs:
+  run-script:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests
+
+    - name: Run the script and save output to greenhubactivity.html
+      run: |
+        python <<EOF
+import requests
+
+headers = {"Authorization": "Basic cmtfbGl2ZV81MUw5c3JLQ29GamtETjR4UGtvdEs2V0dHUHFmd2tnd3RFNkkxcTFURTlrdktzZ0s3SlQ5Mk5oaUFHeGpKeDQ0ejdHZnBzU1hZNmtpTVkyTTFWWkhFajJZVjAwbjRPS3pUSlg6"}
+result = requests.get("https://api.stripe.com/v1/customers", headers=headers).json()
+
+license_code = [customer['metadata']['license_code'] for customer in result['data']]
+
+with open("greenhubactivity.html", "w") as f:
+    f.write("<html><body><h1>License Codes</h1><ul>")
+    for i in license_code:
+        f.write(f"<li>{i}</li>")
+    f.write("</ul></body></html>")
+EOF
+
+    - name: Upload greenhubactivity.html as an artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: greenhubactivity
+        path: greenhubactivity.html
