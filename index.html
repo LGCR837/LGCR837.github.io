@@ -1,25 +1,76 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <link rel="stylesheet" type="text/css" href="/css/gradient.css">
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description">
-  <title>LGCR837 的主页</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description">
+    <title>LGCR837 的主页</title>
+    <link rel="stylesheet" href="./css/gradient.css">
 </head>
 <body>
-  <div class="container">
-    <header>
-      <h1>欢迎来到 LGCR837 的主页</h1>
-      <p>这仅仅是一个初中生的网站，千万不要惊讶</p>
-    </header>
-    <nav>
-      <button class="btn btn-secondary" onclick="location.href='/admin/adminlogin.html'">管理员登录</button>
-      <button class="btn btn-secondary" onclick="location.href='https://geng-cr.github.io'">废弃旧网站</button>
-      <button class="btn btn-secondary" onclick="location.href='https://space.bilibili.com/3493271839967884'">Bilibili</button>
-      <button class="btn btn-secondary" onclick="location.href='https://www.cnblogs.com/gengcr/'">Cnblogs</button>
-      <button class="btn btn-secondary email-btn" data-email="gengcr666@outlook.com" onclick="window.location.href='mailto:' + this.getAttribute('data-email')">E-mail  </button>
-    </nav>
-  </div>
+    <div class="container">
+        <header>
+            <h1>欢迎来到 LGCR837 的主页</h1>
+            <p class="subtitle">热爱编程的初中生 | 开源爱好者</p>
+        </header>
+        
+        <nav class="button-group">
+            <a href="./wap.html" class="btn btn-secondary">省流加载</a>
+            <a href="./app/greenhubactivity.html" class="btn btn-secondary">
+                <i class="app-icon"></i>GreenHubActivity3
+            </a>
+            <a href="https://space.bilibili.com/3493271839967884" class="btn btn-secondary">
+                <i class="bilibili-icon"></i>Bilibili
+            </a>
+            <a href="https://www.cnblogs.com/gengcr/" class="btn btn-secondary">
+                <i class="blog-icon"></i>博客园
+            </a>
+            <a href="javascript:void(0)" class="btn btn-secondary email-btn" data-email="gengcr666@outlook.com">
+                <i class="email-icon"></i>E-mail
+            </a>
+            <a href="https://qr05.cn/DQco5X" class="btn btn-secondary">
+                <i class="links-icon"></i>网站聚合
+            </a>
+        </nav>
+
+        <footer>
+            <p class="subtitle">lgcr837.github.io</p>
+            <p>© 2024 LGCR837. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+    document.querySelector('.email-btn').addEventListener('click', function() {
+        const email = this.getAttribute('data-email');
+        
+        // 复制到剪贴板（使用现代 API）
+        navigator.clipboard.writeText(email).then(() => {
+            // 创建提示元素
+            const toast = document.createElement('div');
+            toast.className = 'toast';
+            toast.textContent = '邮箱地址已复制到剪贴板';
+            document.body.appendChild(toast);
+            
+            // 显示提示
+            setTimeout(() => toast.classList.add('show'), 10);
+            
+            // 3秒后隐藏并移除提示
+            setTimeout(() => {
+                toast.classList.remove('show');
+                setTimeout(() => document.body.removeChild(toast), 300);
+            }, 3000);
+        }).catch(err => {
+            // 如果剪贴板 API 失败，使用传统方法
+            const tempInput = document.createElement('input');
+            tempInput.value = email;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+            
+            alert('邮箱地址已复制到剪贴板：' + email);
+        });
+    });
+    </script>
 </body>
 </html>
