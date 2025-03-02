@@ -1,86 +1,135 @@
 body {
-    font-family: Garamond;
+    font-family: 'Garamond', serif;
+    background-color: #f4f4f9;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 h1 {
-    color: black;
+    color: #333;
     margin-bottom: 0;
     margin-top: 0;
     text-align: center;
     font-size: 40px;
+    font-weight: bold;
 }
 
 h3 {
-    color: black;
+    color: #666;
     font-size: 20px;
     margin-top: 3px;
     text-align: center;
 }
+
 p {
-    color: black;
+    color: #666;
     font-size: 16px;
     margin-top: 3px;
     text-align: center;
 }
+
 #chatbox {
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-    margin-top: 60px;
+    width: 80%;
+    max-width: 600px;
+    margin-top: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
 }
 
 #userInput {
-    margin-left: auto;
-    margin-right: auto;
-    width: 40%;
-    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
 }
 
 #textInput {
-    width: 87%;
+    width: calc(100% - 120px);
     border: none;
     border-bottom: 3px solid #009688;
-    font-family: monospace;
+    font-family: 'Courier New', monospace;
     font-size: 17px;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
 }
 
 #buttonInput {
-    padding: 3px;
-    font-family: monospace;
+    padding: 10px 20px;
+    font-family: 'Courier New', monospace;
     font-size: 17px;
+    background-color: #009688;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#buttonInput:hover {
+    background-color: #00796b;
 }
 
 .userText {
     color: white;
-    font-family: monospace;
+    font-family: 'Courier New', monospace;
     font-size: 17px;
     text-align: right;
     line-height: 30px;
+    margin-bottom: 10px;
 }
 
 .userText span {
     background-color: #009688;
     padding: 10px;
-    border-radius: 2px;
+    border-radius: 5px;
+    display: inline-block;
+    max-width: 70%;
+    word-wrap: break-word;
 }
 
 .botText {
     color: white;
-    font-family: monospace;
+    font-family: 'Courier New', monospace;
     font-size: 17px;
     text-align: left;
     line-height: 30px;
+    margin-bottom: 10px;
 }
 
 .botText span {
     background-color: #EF5350;
     padding: 10px;
-    border-radius: 2px;
+    border-radius: 5px;
+    display: inline-block;
+    max-width: 70%;
+    word-wrap: break-word;
 }
 
 #tidbit {
-    position:absolute;
-    bottom:0;
-    right:0;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
     width: 300px;
+    font-size: 14px;
+    color: #999;
+    text-align: right;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 14px;
 }
