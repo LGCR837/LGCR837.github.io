@@ -1,71 +1,58 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description">
-    <title>LGCR837 的主页</title>
-    <link rel="stylesheet" href="./css/gradient.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LGCR837 的主页">
+  <title>LGCR837 的主页</title>
+  <link rel="stylesheet" href="css/gradient.css"> <!-- 确保路径正确 -->
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>欢迎来到 LGCR837 的主页</h1>
-            <p class="subtitle">热爱编程的初中生 | 开源爱好者</p>
-        </header>
-        
-        <nav class="button-group">
-            <a href="./app/peak.html" class="btn btn-secondary">PEAK</a>
-            <a href="./app/tool.html" class="btn btn-secondary">工具箱</a>
-            <a href="https://space.bilibili.com/3493271839967884" class="btn btn-secondary">我的 B 站</a>
-            <a href="https://www.cnblogs.com/gengcr/" class="btn btn-secondary">博客园</a>
-            <a href="javascript:void(0)" class="btn btn-secondary email-btn" data-email="gengcr666@outlook.com">E-mail</a>
-            <a href="https://qr05.cn/DQco5X" class="btn btn-secondary">网站聚合</a>
-            <a href="./app/friends.html" class="btn btn-secondary">友情链接</a>
-        </nav>
+  <div class="container">
+    <header>
+      <h1>欢迎来到 LGCR837 的主页</h1>
+      <p class="subtitle">热爱编程的初中生 | 开源爱好者</p>
+    </header>
+    
+    <nav class="button-group">
+      <a href="./app/peak.html" class="btn btn-secondary">PEAK</a>
+      <a href="./app/tool.html" class="btn btn-secondary">工具箱</a>
+      <a href="https://space.bilibili.com/3493271839967884" class="btn btn-secondary">我的 B 站</a>
+      <a href="https://www.cnblogs.com/gengcr/" class="btn btn-secondary">博客园</a>
+      <a href="javascript:void(0)" class="btn btn-secondary email-btn" data-email="gengcr666@outlook.com">E-mail</a>
+      <a href="https://qr05.cn/DQco5X" class="btn btn-secondary">网站聚合</a>
+      <a href="./app/friends.html" class="btn btn-secondary">友情链接</a>
+    </nav>
 
-        <footer>
-            <p class="subtitle">
-                <a href="https://lgcr837.github.io" style="color: inherit; text-decoration: none;">lgcr837.github.io [Main]</a><br>
-                <a href="https://lgcr837-github-io.pages.dev" style="color: inherit; text-decoration: none;">lgcr837-github-io.pages.dev [CDN]</a><br>
-                <a href="https://cn.paydn.cn" style="color: inherit; text-decoration: none;">cn.paydn.cn [CDN]</a><br>
-            </p>
-            <p>域名常换，但我永在<br>2022至今，我们经历了无数的风雨，换了 8 个域名，但我永不放弃<br>© 2025 LGCR837. All rights reserved.</p>
-        </footer>
-    </div>
+    <footer>
+      <p class="subtitle">
+        <a href="https://lgcr837.github.io" style="color: inherit; text-decoration: none;">lgcr837.github.io [Main]</a><br>
+        <a href="https://lgcr837-github-io.pages.dev" style="color: inherit; text-decoration: none;">lgcr837-github-io.pages.dev [CDN]</a><br>
+        <a href="https://cn.paydn.cn" style="color: inherit; text-decoration: none;">cn.paydn.cn [CDN]</a><br>
+      </p>
+      <p>域名常换，但我永在<br>2022至今，我们经历了无数的风雨，换了 8 个域名，但我永不放弃<br>© 2025 LGCR837. All rights reserved.</p>
+    </footer>
+  </div>
 
-    <script>
+  <script>
     document.querySelector('.email-btn').addEventListener('click', function() {
-        const email = this.getAttribute('data-email');
+      const email = this.getAttribute('data-email');
+      
+      // 复制到剪贴板（使用现代 API）
+      navigator.clipboard.writeText(email).then(() => {
+        alert('邮箱地址已复制到剪贴板：' + email);
+      }).catch(err => {
+        // 如果剪贴板 API 失败，使用传统方法
+        const tempInput = document.createElement('input');
+        tempInput.value = email;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
         
-        // 复制到剪贴板（使用现代 API）
-        navigator.clipboard.writeText(email).then(() => {
-            // 创建提示元素
-            const toast = document.createElement('div');
-            toast.className = 'toast';
-            toast.textContent = '邮箱地址已复制到剪贴板';
-            document.body.appendChild(toast);
-            
-            // 显示提示
-            setTimeout(() => toast.classList.add('show'), 10);
-            
-            // 3秒后隐藏并移除提示
-            setTimeout(() => {
-                toast.classList.remove('show');
-                setTimeout(() => document.body.removeChild(toast), 300);
-            }, 3000);
-        }).catch(err => {
-            // 如果剪贴板 API 失败，使用传统方法
-            const tempInput = document.createElement('input');
-            tempInput.value = email;
-            document.body.appendChild(tempInput);
-            tempInput.select();
-            document.execCommand('copy');
-            document.body.removeChild(tempInput);
-            
-            alert('邮箱地址已复制到剪贴板：' + email);
-        });
+        alert('邮箱地址已复制到剪贴板：' + email);
+      });
     });
-    </script>
+  </script>
 </body>
 </html>
