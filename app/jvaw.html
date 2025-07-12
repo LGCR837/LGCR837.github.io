@@ -185,7 +185,9 @@
             <div class="logo">Jvaw</div>
             <nav>
                 <ul>
+                    <li><a href="../../">LGCR837</a></li>
                     <li><a href="#home">首页</a></li>
+                    <li><a href="#ksks">快速开始</a></li>
                 </ul>
             </nav>
         </div>
@@ -221,24 +223,25 @@
 
     <section class="docs" id="docs">
         <div class="container docs-container">
-            <h2>快速开始</h2>
+            <h2 id="ksks">快速开始</h2>
             <div class="quick-start">
                 <h3>安装 Jvaw</h3>
-                <p>在命令行中运行以下命令来安装 Jvaw：</p>
+                <p>安装Python3和Git并在命令行中运行以下命令 或 直接下载已编译的可执行文件</p>
                 <div class="code-block">
                     <pre>git clone https://gitee.com/lgcr837/jvaw.git
 cd jvaw</pre>
                 </div>
                 <h3>编写第一个程序</h3>
-                <p>创建一个名为 <code>hello.jvaw</code> 的文件，并输入以下代码：</p>
+                <p>创建一个名为 <code>hello.jvaw</code> 的文件，并输入以下代码</p>
                 <div class="code-block">
                     <pre>printn("Hello World!\nHello Jvaw!")</pre>
                 </div>
-                <p>运行程序：</p>
+                <p>编译程序</p>
                 <div class="code-block">
-                    <pre>jvaw hello.jvaw</pre>
+                    <pre>jvaw hello.jvaw -o hello.exe</pre>
+                    <pre>.\hello.exe</pre>
                 </div>
-                <p>但因为项目还没有完善，所以你不会看到<br><code>Hello World!<br>Hello, Jvaw!</code></p>
+                <p>输出:<br>Hello World!<br>Hello, Jvaw!</p>
             </div>
         </div>
     </section>
