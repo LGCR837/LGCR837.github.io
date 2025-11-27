@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LKENCODE</title>
+    <style>
+        * {box-sizing: border-box; margin: 0; padding: 0; font-family: Arial, sans-serif;}
+        body {padding: 20px; background: #f5f5f5;}
+        .box {max-width: 800px; margin: 0 auto; background: white; padding: 20px; border-radius: 4px;}
+        h1 {text-align: center; margin-bottom: 20px;}
+        .main {display: flex; gap: 20px; flex-wrap: wrap;}
+        .sec {flex: 1; min-width: 300px;}
+        h2 {margin-bottom: 15px;}
+        .form-group {margin-bottom: 10px;}
+        label {display: block; margin-bottom: 5px;}
+        textarea {width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 4px; min-height: 80px; resize: vertical;}
+        textarea[readonly] {background: #f9f9f9;}
+        button {width: 100%; padding: 8px; border: none; background: #007bff; color: white; border-radius: 4px; cursor: pointer; margin: 5px 0;}
+        button.gray {background: #6c757d;}
+        .btn-group {display: flex; gap: 5px;}
+        .btn-group button {width: 50%;}
+        #status {margin-top: 15px; padding: 8px; border-radius: 4px;}
+        .ok {background: #d4edda; color: #155724;}
+        .err {background: #f8d7da; color: #721c24;}
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>LKENCODE</h1>
+        <div class="main">
+            <div class="sec">
+                <h2>加密</h2>
+                <div class="form-group">
+                    <label>可见文本:</label>
+                    <textarea id="vText">这是可见文本</textarea>
+                </div>
+                <div class="form-group">
+                    <label>隐藏文本:</label>
+                    <textarea id="sText">这是隐藏文本</textarea>
+                </div>
+                <button onclick="encrypt()">加密</button>
+                <div class="form-group">
+                    <label>结果:</label>
+                    <textarea id="eResult" readonly></textarea>
+                </div>
+                <button class="gray" onclick="copy()">复制</button>
+            </div>
+            <div class="sec">
+                <h2>解密</h2>
+                <div class="form-group">
+                    <label>待解密文本:</label>
+                    <textarea id="dText"></textarea>
+                </div>
+                <div class="btn-group">
+                    <button onclick="decrypt()">解密</button>
+                    <button class="gray" onclick="paste()">粘贴</button>
+                </div>
+                <div class="form-group">
+                    <label>结果:</label>
+                    <textarea id="dResult" readonly></textarea>
+                </div>
+            </div>
+        </div>
+        <div id="status" class="ok">就绪</div>
+    </div>
+
+    <script>
+        const ZWSP = String.fromCharCode(0x200B);
+        const ZWNJ = String.fromCharCode(0x200C);
+        const ZWJ = String.fromCharCode(0x200D);
+        const ZWNBSP = String.fromCharCode(0xFEFF);
+        
+        const binToZw = {"00":ZWSP,"01":ZWNJ,"10":ZWJ,"11":ZWNBSP};
+        const zwToBin = {[ZWSP]:"00",[ZWNJ]:"01",[ZWJ]:"10",[ZWNBSP]:"11"};
+
+        function encrypt() {
+            let v = document.getElementById('vText').value;
+            let s = document.getElementById('sText').value;
+            if(!v) return status('请输入可见文本',1);
+            if(!s) return status('请输入隐藏文本',1);
+            
+            let encoder = new TextEncoder();
+            let bytes = encoder.encode(s);
+            let bin = '';
+            bytes.forEach(b => bin += b.toString(2).padStart(8,'0'));
+            
+            let zw = '';
+            for(let i=0; i<bin.length; i+=2) {
+                let bits = i+1 < bin.length ? bin.substr(i,2) : bin.substr(i,1)+'0';
+                zw += binToZw[bits];
+            }
+            
+            let chars = v.split('');
+            let res = '';
+            if(chars.length <= 1) {
+                res = v + zw;
+            } else {
+                let m = chars.length - 1;
+                let len = Math.floor(zw.length/m);
+                let rem = zw.length%m;
+                let start = 0;
+                for(let i=0; i<chars.length; i++) {
+                    res += chars[i];
+                    if(i < m) {
+                        let l = i < rem ? len+1 : len;
+                        res += zw.substr(start, l);
+                        start += l;
+                    }
+                }
+            }
+            
+            document.getElementById('eResult').value = res;
+            status('加密完成');
+        }
+
+        function decrypt() {
+            let t = document.getElementById('dText').value;
+            if(!t) return status('请输入待解密文本',1);
+            
+            let zw = [];
+            for(let c of t) {
+                if(zwToBin.hasOwnProperty(c)) zw.push(c);
+            }
+            
+            if(zw.length === 0) return (document.getElementById('dResult').value = '', status('无隐藏信息',1));
+            
+            let bin = '';
+            zw.forEach(c => bin += zwToBin[c]);
+            
+            let bytes = [];
+            for(let i=0; i+8 <= bin.length; i+=8) {
+                bytes.push(parseInt(bin.substr(i,8),2));
+            }
+            
+            let decoder = new TextDecoder('utf-8');
+            let res = decoder.decode(new Uint8Array(bytes));
+            document.getElementById('dResult').value = res;
+            status('解密完成');
+        }
+
+        function copy() {
+            let t = document.getElementById('eResult');
+            if(!t.value) return status('无内容可复制',1);
+            t.select();
+            document.execCommand('copy');
+            status('已复制');
+        }
+
+        function paste() {
+            let t = document.getElementById('dText');
+            t.focus();
+            document.execCommand('paste');
+            status('已粘贴');
+        }
+
+        function status(m, e=0) {
+            let s = document.getElementById('status');
+            s.textContent = m;
+            s.className = e ? 'err' : 'ok';
+        }
+    </script>
+</body>
+</html>
