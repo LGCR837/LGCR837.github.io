@@ -1,15 +1,29 @@
+# GitHub
 [[social]]
-    identifier = "github"
-    name       = "GitHub"
-    url        = "https://github.com/CaiJimmy/hugo-theme-stack"
+  identifier = "github"
+  name = "GitHub"
+  url = "https://github.com/LGCR837"
 
-    [social.params]
-        icon = "brand-github"
-
+# Gitee
 [[social]]
-    identifier = "twitter"
-    name       = "Twitter"
-    url        = "https://twitter.com"
+  identifier = "gitee"
+  name = "Gitee"
+  url = "https://gitee.com/lgcr837"
 
-    [social.params]
-        icon = "brand-twitter"
+# Bilibili
+[[social]]
+  identifier = "bilibili"
+  name = "Bilibili"
+  url = "https://space.bilibili.com/3493271839967884"
+
+# Email
+[[social]]
+  identifier = "email"
+  name = "Email"
+  url = "mailto:gengcr666@outlook.com"
+
+# QQ
+[[social]]
+  identifier = "qq"
+  name = "QQ"
+  url = "tencent://message/?uin=2067686978"

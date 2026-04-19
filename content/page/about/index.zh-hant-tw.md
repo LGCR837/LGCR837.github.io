@@ -1,8 +1,8 @@
 ---
 title: 關於
-description: 關於本站及其作者的一切。
+description: 關於 LGCR837 和這個部落格
 date: 2026-01-26
-lastmod: 2026-01-26
+lastmod: 2026-04-19
 menu:
     main: 
         weight: -90
@@ -10,37 +10,27 @@ menu:
             icon: user
 ---
 
-## 這是給誰看的？
+> 本頁面使用 AI 翻譯。
 
-這是一個示例**關於**頁面。你可以用它來介紹你自己、你的博客或你的項目。
+## 關於本站
 
-## 關於作者
+這個部落格是在 2026 年 4 月 19 日完成的，在此之前，這是我的資源分享站。
 
-你好！我是一個熱衷於博客和開源的愛好者。我喜歡探索新技術並向社區分享我的經驗。
+這個部落格由 [Hugo](https://gohugo.io/) 驅動，使用 [Stack](https://github.com/CaiJimmy/hugo-theme-stack) 主題，部署在 GitHub Pages 上，在 Codespaces 中除錯。
 
-### 我的旅程
+## 關於我
 
-我在 10 多年前開始了我的 Web 開發之旅。自那以後，我參與了許多項目，從個人博客到大規模企業應用。
+我是 LGCR837，一個國中生。
 
-### 技能
+## 找到我
 
-- **前端**: HTML, CSS, JavaScript, React, Vue
-- **後端**: Node.js, Python, Go
-- **工具**: Git, Docker, Hugo, Neovim
+你可以在這些地方看到我的動態：
 
-## 聯繫我
-
-如果你有任何問題或只是想打個招呼，請隨時聯繫我！
-
-- **電子郵件**: [hello@example.com](mailto:hello@example.com)
-- **Twitter**: [@example](https://twitter.com/example)
-- **GitHub**: [example](https://github.com/example)
+- **GitHub**：[LGCR837](https://github.com/LGCR837)
+- **Gitee**：[lgcr837](https://gitee.com/lgcr837)
+- **Bilibili**：[LGCR837](https://space.bilibili.com/3493271839967884)
+- **Email**：[gengcr666@outlook.com](mailto:gengcr666@outlook.com)
 
 ---
 
-> "Logic will get you from A to B. Imagination will take you everywhere."  
-> — *Albert Einstein*
-
----
-*此頁面由 AI 生成。*
-
+> Accept what is, imagine what’s next.

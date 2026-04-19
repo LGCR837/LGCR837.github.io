@@ -1,8 +1,8 @@
 ---
-title: このサイトについて
-description: このサイトとその著者についてのすべて。
+title: について
+description: LGCR837 とこのブログについて
 date: 2026-01-26
-lastmod: 2026-01-26
+lastmod: 2026-04-19
 menu:
     main: 
         weight: -90
@@ -10,37 +10,27 @@ menu:
             icon: user
 ---
 
-## 誰のためのページですか？
+> このページは AI 翻訳を使用しています。
 
-これは**サンプル詳細**ページです。あなた自身、あなたのブログ、またはあなたのプロジェクトを紹介するために使用できます。
+## このサイトについて
 
-## 著者について
+このブログは 2026年4月19日に完成しました。それ以前は、リソース共有サイトでした。
 
-こんにちは！私はブログとオープンソースに情熱を注いでいる愛好家です。新しい技術を探索し、その経験をコミュニティと共有することが大好きです。
+このブログは [Hugo](https://gohugo.io/) で動作し、[Stack](https://github.com/CaiJimmy/hugo-theme-stack) テーマを使用し、GitHub Pages にデプロイされ、Codespaces でデバッグされています。
 
-### 私の歩み
+## 私について
 
-10年以上前にWeb開発の旅を始めました。それ以来、個人のブログから大規模なエンタープライズアプリケーションまで、数多くのプロジェクトに携わってきました。
+私は LGCR837 です。中学生です。
 
-### スキル
+## 私を見つける
 
-- **フロントエンド**: HTML, CSS, JavaScript, React, Vue
-- **バックエンド**: Node.js, Python, Go
-- **ツール**: Git, Docker, Hugo, Neovim
+以下の場所で私の活動を見ることができます：
 
-## お問い合わせ
-
-質問がある場合や、単にあいさつをしたい場合は、お気軽にご連絡ください！
-
-- **メール**: [hello@example.com](mailto:hello@example.com)
-- **Twitter**: [@example](https://twitter.com/example)
-- **GitHub**: [example](https://github.com/example)
+- **GitHub**：[LGCR837](https://github.com/LGCR837)
+- **Gitee**：[lgcr837](https://gitee.com/lgcr837)
+- **Bilibili**：[LGCR837](https://space.bilibili.com/3493271839967884)
+- **Email**：[gengcr666@outlook.com](mailto:gengcr666@outlook.com)
 
 ---
 
-> "Logic will get you from A to B. Imagination will take you everywhere."  
-> — *Albert Einstein*
-
----
-*このページは AI によって生成されました。*
-
+> Accept what is, imagine what’s next.

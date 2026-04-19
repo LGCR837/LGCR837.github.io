@@ -1,14 +1,13 @@
 mainSections   = ["post"]
 rssFullContent = true
-favicon        = "img/avatar.png"
+favicon        = "img/avatar.webp"
 
 [footer]
-    since = 2020
+    since = 2026
 
 [sidebar]
-    emoji    = "✏️"
-    subtitle = "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-    avatar   = "img/avatar.png"
+    subtitle = "Accept what is, imagine what’s next."
+    avatar   = "img/avatar.webp"
 
 [article]
     [article.license]
@@ -37,3 +36,4 @@ favicon        = "img/avatar.png"
     [cookies.categories]
         analytics  = true
         functional = true
+

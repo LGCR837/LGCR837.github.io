@@ -3,13 +3,10 @@ languageCode           = "zh-cn"
 title                  = "LGCR837's Blog"
 # Theme i18n support
 # See i18n folder for available languages
-defaultContentLanguage = "en"
+defaultContentLanguage = "zh"
 # Set hasCJKLanguage to true if DefaultContentLanguage is a CJK language
 # This will make .Summary and .WordCount behave correctly
-hasCJKLanguage         = false
-
-[sidebar]
-  avatar = "img/avatar.webp"
+hasCJKLanguage         = true
 
 [pagination]
     pagerSize = 5
@@ -21,37 +18,3 @@ hasCJKLanguage         = false
 [services.disqus]
     shortname = "hugo-theme-stack"
 
-# GitHub
-[[social]]
-  identifier = "github"
-  name = "GitHub"
-  url = "https://github.com/LGCR837"
-  icon = "brand-github"
-
-# Gitee
-[[social]]
-  identifier = "gitee"
-  name = "Gitee"
-  url = "https://gitee.com/lgcr837"
-  icon = "brand-gitee"
-
-# Bilibili
-[[social]]
-  identifier = "bilibili"
-  name = "Bilibili"
-  url = "https://space.bilibili.com/3493271839967884"
-  icon = "brand-bilibili"
-
-# Email
-[[social]]
-  identifier = "email"
-  name = "Email"
-  url = "mailto:gengcr666@outlook.com"
-  icon = "mail"
-
-# QQ
-[[social]]
-  identifier = "qq"
-  name = "QQ"
-  url = "tencent://message/?uin=2067686978"
-  icon = "brand-qq"
