@@ -1,29 +1,4 @@
-# GitHub
+# CDN
 [[social]]
-  identifier = "github"
-  name = "GitHub"
-  url = "https://github.com/LGCR837"
-
-# Gitee
-[[social]]
-  identifier = "gitee"
-  name = "Gitee"
-  url = "https://gitee.com/lgcr837"
-
-# Bilibili
-[[social]]
-  identifier = "bilibili"
-  name = "Bilibili"
-  url = "https://space.bilibili.com/3493271839967884"
-
-# Email
-[[social]]
-  identifier = "email"
-  name = "Email"
-  url = "mailto:gengcr666@outlook.com"
-
-# QQ
-[[social]]
-  identifier = "qq"
-  name = "QQ"
-  url = "tencent://message/?uin=2067686978"
+  name = "Fast"
+  url = "http://fast.gweb.work.gd"
